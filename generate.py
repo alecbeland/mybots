@@ -1,24 +1,35 @@
 import pyrosim.pyrosim as pyrosim
 
-# Define world and save to box.sdf
-pyrosim.Start_SDF("box.sdf")
+# Define world and save to boxes.sdf
+pyrosim.Start_SDF("boxes.sdf")
 
-# Add a cube "Box" with pos and size
-length = 1
-width = 1
-height = 1
-x = 0
-y = 0.5
-z = 0
-pyrosim.Send_Cube(name="Box", pos=[x,z,y], size=[length, width, height])
+# Base cube size
+base_length = 1
+base_width = 1
+base_height = 1
 
-# Add a second cube "Box2" with pos and size
-length = 1
-width = 1
-height = 1
-x = 1
-y = 1.5
-z = 0
-pyrosim.Send_Cube(name="Box2", pos=[x,z,y], size=[length, width, height])
+# Grid size (5x5)
+grid_size = 5
+tower_height = 10
+
+# Loop through rows
+for i in range(5):    
+    
+    # Loop through columns
+    for j in range(5):
+        x = i
+        y = j
+        z = 0.5
+        length = base_length
+        width = base_width
+        height = base_height
+
+        # Stack block tower at location
+        for k in range(10):
+            pyrosim.Send_Cube(name=f"Box({i},{j},{k})", pos=[x,y,z], size=[length, width, height])
+            z += height
+            length *= 0.9
+            width *= 0.9
+            height *= 0.9
 
 pyrosim.End()

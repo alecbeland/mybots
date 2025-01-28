@@ -12,8 +12,8 @@ p.setGravity(0,0,-9.8)
 # Add Floor
 planeId = p.loadURDF("plane.urdf")
 
-# Simulate "box"
-p.loadSDF("box.sdf")
+# Simulate "boxes"
+p.loadSDF("boxes.sdf")
 
 for i in range(1000):
 	p.stepSimulation()
