@@ -12,6 +12,9 @@ p.setGravity(0,0,-9.8)
 # Add Floor
 planeId = p.loadURDF("plane.urdf")
 
+# Add Robot
+robotId = p.loadURDF("body.urdf")
+
 # Simulate "boxes"
 p.loadSDF("world.sdf")
 
