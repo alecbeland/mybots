@@ -37,7 +37,6 @@ class NEURON:
         return self.name
 
     def Get_Value(self):
-
         return self.value
 
     def Is_Sensor_Neuron(self):
@@ -65,6 +64,13 @@ class NEURON:
     def Set_Value(self,value):
 
         self.value = value
+    
+    def Update_Sensor_Neuron(self):
+        #MY FUNCTION
+        self.Set_Value(pyrosim.Get_Touch_Sensor_Value_For_Link(self.Get_Link_Name()))
+
+    def Update_Hidden_Or_Motor_Neuron(self):
+        self.value = 0
 
 # -------------------------- Private methods -------------------------
 

@@ -13,7 +13,8 @@ class SENSOR:
 
         if t == len(self.values) - 1:
             # Print the full sensor vector at the last time step
-            print(self.values)
+            #print(self.values)
+            pass
 
     
     def Save_Values(self):

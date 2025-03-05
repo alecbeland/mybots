@@ -27,10 +27,11 @@ class SIMULATION:
 
     def Run(self):
         for i in range(1000):
-            print(i)
+            #print(i)
             p.stepSimulation()
             time.sleep(0.0166)
             self.robot.Sense(i)
+            self.robot.Think()
             self.robot.Act(i)
 
         self.robot.Save_Values()
