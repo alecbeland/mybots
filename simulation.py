@@ -26,7 +26,7 @@ class SIMULATION:
 
 
     def Run(self):
-        for i in range(1000):
+        for i in range(c.NUM_STEPS):
             #print(i)
             p.stepSimulation()
             time.sleep(0.0166)

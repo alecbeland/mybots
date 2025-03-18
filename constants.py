@@ -24,7 +24,10 @@ PHASE_OFFSET = 0
 MAX_FORCE = 20
 
 # Simulation steps
-NUM_STEPS = 1000
+NUM_STEPS = 100
+
+# Number of simulations run in search.py
+NUM_SIMULATIONS = 5
 
 # Max force applied by motors
 MAX_FORCE_BACK_LEG = 200
