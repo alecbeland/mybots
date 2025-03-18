@@ -1,4 +1,5 @@
 import pybullet as p
+import sys
 import pybullet_data
 from world import WORLD
 from robot import ROBOT
@@ -11,7 +12,12 @@ class SIMULATION:
 
     def __init__(self):
         # Connect to pybullet
-        self.physicsClient = p.connect(p.GUI)
+        directOrGUI = sys.argv[1]
+        if directOrGUI == "DIRECT":
+            p.connect(p.DIRECT)
+        else:
+            p.connect(p.GUI)
+
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
         # Set Gravity
@@ -39,3 +45,6 @@ class SIMULATION:
     def __del__(self):
         # End Simulation
         p.disconnect()
+
+    def Get_Fitness(self):
+        self.robot.Get_Fitness()

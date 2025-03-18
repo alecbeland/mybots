@@ -39,7 +39,7 @@ class ROBOT:
 
         # Attach motors to every joint
         for jointName in pyrosim.jointNamesToIndices:
-            print(jointName)
+            # print(jointName)
             self.motors[jointName] = MOTOR(jointName)
 
 
@@ -53,7 +53,7 @@ class ROBOT:
 
     def Think(self):
         self.nn.Update()
-        self.nn.Print()
+        # self.nn.Print()
 
 
     def Save_Values(self):
@@ -61,3 +61,12 @@ class ROBOT:
             sensor.Save_Values()
         for motor in self.motors.values():
             motor.Save_Values()
+
+
+    def Get_Fitness(self):
+        stateOfLinkZero = p.getLinkState(self.robotId, 0)
+        positionOfLinkZero = stateOfLinkZero[0]
+        xCoordinateOfLinkZero = positionOfLinkZero[0]
+
+        with open("fitness.txt", "w") as f:
+            f.write(str(xCoordinateOfLinkZero))
