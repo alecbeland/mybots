@@ -2,26 +2,41 @@ import random
 import numpy as np
 import os
 import pyrosim.pyrosim as pyrosim
+from robot import ROBOT
+import time
 
 class SOLUTION:
 
 
-    def __init__(self):
-        self.weights = np.random.rand(3, 2)  # [0, 1]
+    def __init__(self, solutionID):
+        self.weights = np.random.rand(3, 2) * 2 - 1
+        self.myID = solutionID
 
-        self.weights = self.weights * 2 - 1  # Scale to [-1, +1]
+        self.solutionID = solutionID
+        
+
     
-
-    def Evaluate(self, mode):
+    def Start_Simulation(self, mode):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system(f"python3 simulate.py {mode}")
+        command = f"python3 simulate.py {mode} {self.myID} &"
+        os.system(command)
 
-        # Read fitness from file
-        fitnessFile = open("fitness.txt", "r")
-        self.fitness = float(fitnessFile.read())
-        fitnessFile.close()
+
+    def Wait_For_Simulation_To_End(self):
+        fitnessFileName = f"fitness{self.myID}.txt"
+
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+
+        with open(fitnessFileName, "r") as f:
+            self.fitness = float(f.read())
+
+        print(f"Fitness of solution {self.myID}: {self.fitness}")
+
+        os.system(f"rm {fitnessFileName}")
+
 
 
     def Create_World(self):
@@ -44,7 +59,7 @@ class SOLUTION:
 
 
     def Create_Brain(self):
-        pyrosim.Start_NeuralNetwork("brain.nndf")
+        pyrosim.Start_NeuralNetwork(f"brain{self.myID}.nndf")
 
         # Sensor neurons
         pyrosim.Send_Sensor_Neuron(name=0, linkName="Torso")
@@ -72,3 +87,7 @@ class SOLUTION:
         randomRow = random.randint(0, 2)  # choose sensor neuron
         randomColumn = random.randint(0, 1)  # choose motor neuron
         self.weights[randomRow, randomColumn] = random.random() * 2 - 1
+
+
+    def Set_ID(self, newID):
+        self.myID = newID

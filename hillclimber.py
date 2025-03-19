@@ -26,10 +26,6 @@ class HILL_CLIMBER:
         self.Select()
 
 
-    def Spawn(self):
-        pass
-
-
     def Mutate(self):
         self.child.Mutate()
 

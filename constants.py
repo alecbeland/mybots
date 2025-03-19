@@ -24,11 +24,12 @@ PHASE_OFFSET = 0
 MAX_FORCE = 20
 
 # Simulation steps
-NUM_STEPS = 300
+NUM_STEPS = 100
 
 # Number of generations
 numberOfGenerations = 10
 
+populationSize = 10
 
 # Max force applied by motors
 MAX_FORCE_BACK_LEG = 200
