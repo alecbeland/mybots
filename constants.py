@@ -24,7 +24,7 @@ PHASE_OFFSET = 0
 MAX_FORCE = 20
 
 # Simulation steps
-NUM_STEPS = 100
+NUM_STEPS = 1000
 
 # Number of generations
 numberOfGenerations = 10
@@ -34,3 +34,9 @@ populationSize = 10
 # Max force applied by motors
 MAX_FORCE_BACK_LEG = 200
 MAX_FORCE_FRONT_LEG = 200
+
+motorJointRange = 0.2
+
+# Neural Network Constants
+numSensorNeurons = 4
+numMotorNeurons = 8
