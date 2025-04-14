@@ -9,9 +9,18 @@ width = 1
 height = 1
 
 def Create_World():
-    pyrosim.Start_SDF("world.sdf")
-    pyrosim.Send_Cube(name="Box", pos=[-3,3,0.5], size=[length, width, height])
-    pyrosim.End()
+    pyrosim.Start_SDF("worlds.sdf")
+
+    # Dimensions of each block
+    length = 0.5
+    width = 0.5
+    height = 0.5
+
+    # Create a grid of blocks in front of the robot (positive x direction)
+    for x in range(2, 10, 2):       # x positions: 2, 4, 6, 8
+        for y in range(-2, 3, 2):   # y positions: -2, 0, 2
+            pyrosim.Send_Cube(name="Obstacle", pos=[x, y, height / 2], size=[length, width, height])
+
 
 def Generate_Body():
     pyrosim.Start_URDF("body.urdf")
@@ -54,5 +63,6 @@ def Create_Robot():
 
 if __name__ == '__main__':
     Create_World()
-    Create_Robot()
+    #Create_Robot()
+
     

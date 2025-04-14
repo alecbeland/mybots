@@ -37,8 +37,9 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act(i)
-            if self.directOrGUI == "GUI":
-                time.sleep(0.0166)
+            # --- If too fast for viewing uncomment ---
+            # if self.directOrGUI == "GUI":
+            #     time.sleep(0.008)
 
         self.robot.Save_Values()
 

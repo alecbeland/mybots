@@ -21,13 +21,13 @@ PHASE_OFFSET_FRONT_LEG = np.pi / 2
 AMPLITUDE = np.pi / 3
 FREQUENCY = 3.5
 PHASE_OFFSET = 0
-MAX_FORCE = 20
+MAX_FORCE = 200
 
 # Simulation steps
 NUM_STEPS = 1000
 
 # Number of generations
-numberOfGenerations = 10
+numberOfGenerations = 20
 
 populationSize = 10
 

@@ -3,6 +3,7 @@ import pyrosim.pyrosim as pyrosim
 from pyrosim.neuralNetwork import NEURAL_NETWORK
 from sensor import SENSOR
 from motor import MOTOR
+import numpy as np
 import constants as c
 import os
 
@@ -42,11 +43,13 @@ class ROBOT:
     
     def Prepare_To_Act(self):
         self.motors = {}
-
+        
         # Attach motors to every joint
         for jointName in pyrosim.jointNamesToIndices:
             # print(jointName)
             self.motors[jointName] = MOTOR(jointName)
+            # initialize random weight
+            self.sinVals = np.linspace(0, (2 * np.pi), 1000)
 
 
     def Act(self, t):

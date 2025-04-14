@@ -12,6 +12,7 @@ class PARALLEL_HILL_CLIMBER:
         self.nextAvailableID = 0
         for i in range(c.populationSize):
             self.parents[i] = SOLUTION(self.nextAvailableID)
+            self.parents[i].Create_World()
             self.nextAvailableID += 1
 
 
@@ -19,13 +20,15 @@ class PARALLEL_HILL_CLIMBER:
 
     def Evolve(self):
         self.Evaluate(self.parents)
+        for currentGeneration in range(c.numberOfGenerations):
+            self.Evolve_For_One_Generation()
+        
         # # Show the first random solution visually
         # self.parent.Evaluate("GUI")
 
         # # Now evaluate the parent blindly before evolution begins
         # self.parent.Evaluate("DIRECT")
-        # for currentGeneration in range(c.numberOfGenerations):
-        #     self.Evolve_For_One_Generation()
+        
 
     
     def Evolve_For_One_Generation(self):
@@ -83,3 +86,4 @@ class PARALLEL_HILL_CLIMBER:
                 bestParent = parent
 
         bestParent.Start_Simulation("GUI")
+
