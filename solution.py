@@ -43,19 +43,28 @@ class SOLUTION:
         pyrosim.Start_SDF("world.sdf")
 
         length, width, height = 1.0, 1.0, 1.0
-        spacing = 3  # meters between blocks
+        spacing = 4  # meters between blocks
         x_start = -3  # starting X position (behind robot)
-        y_start = -6  # starting Y position (left side)
+        y_start = -17.5  # starting Y position (left side)
 
         for i in range(4):  # 4 blocks long
-            for j in range(5):  # 5 blocks wide
-                x = x_start - (i * spacing)
-                y = y_start + (j * spacing)
-                pyrosim.Send_Cube(
-                    name=f"Obstacle_{i}_{j}",
-                    pos=[x, y, height / 2],
-                    size=[length, width, height]
-                )
+            for j in range(10):  # 10 blocks wide
+                if i%2:   
+                    x = x_start - (i * spacing)
+                    y = y_start + (j * spacing) + 2.5
+                    pyrosim.Send_Cube(
+                        name=f"Obstacle_{i}_{j}",
+                        pos=[x, y, height / 2],
+                        size=[length, width, height]
+                    )
+                else:
+                    x = x_start - (i * spacing)
+                    y = y_start + (j * spacing)
+                    pyrosim.Send_Cube(
+                        name=f"Obstacle_{i}_{j}",
+                        pos=[x, y, height / 2],
+                        size=[length, width, height]
+                    )
 
         pyrosim.End()
 
@@ -146,12 +155,38 @@ class SOLUTION:
     def Create_Brain(self):
         pyrosim.Start_NeuralNetwork(f"brain{self.myID}.nndf")
 
+
+        # ------------------ BRAIN A ------------------ switch # of sensors in constants
+        # # Sensor neurons
+        # pyrosim.Send_Sensor_Neuron(name=0, linkName="BackLowerLeg")
+        # pyrosim.Send_Sensor_Neuron(name=1, linkName="FrontLowerLeg")
+        # pyrosim.Send_Sensor_Neuron(name=2, linkName="LeftLowerLeg")
+        # pyrosim.Send_Sensor_Neuron(name=3, linkName="RightLowerLeg")
+
+        # pyrosim.Send_Sensor_Neuron(name=4, linkName="FrontLeg")
+        # pyrosim.Send_Sensor_Neuron(name=5, linkName="BackLeg")
+        # pyrosim.Send_Sensor_Neuron(name=6, linkName="LeftLeg")
+        # pyrosim.Send_Sensor_Neuron(name=7, linkName="RightLeg")
+
+        # pyrosim.Send_Sensor_Neuron(name=8, linkName="Torso")
+
+        # # Motor neurons
+        # pyrosim.Send_Motor_Neuron(name=9, jointName="Torso_BackLeg")
+        # pyrosim.Send_Motor_Neuron(name=10, jointName="Torso_FrontLeg")
+        # pyrosim.Send_Motor_Neuron(name=11, jointName="Torso_LeftLeg")
+        # pyrosim.Send_Motor_Neuron(name=12, jointName="Torso_RightLeg")
+
+        # pyrosim.Send_Motor_Neuron(name=13, jointName="BackLeg_BackLowerLeg")
+        # pyrosim.Send_Motor_Neuron(name=14, jointName="FrontLeg_FrontLowerLeg")
+        # pyrosim.Send_Motor_Neuron(name=15, jointName="LeftLeg_LeftLowerLeg")
+        # pyrosim.Send_Motor_Neuron(name=16, jointName="RightLeg_RightLowerLeg")
+
+        # ------------------ BRAIN B ------------------ switch # of sensors in constants
         # Sensor neurons
         pyrosim.Send_Sensor_Neuron(name=0, linkName="BackLowerLeg")
         pyrosim.Send_Sensor_Neuron(name=1, linkName="FrontLowerLeg")
         pyrosim.Send_Sensor_Neuron(name=2, linkName="LeftLowerLeg")
         pyrosim.Send_Sensor_Neuron(name=3, linkName="RightLowerLeg")
-
 
         # Motor neurons
         pyrosim.Send_Motor_Neuron(name=4, jointName="Torso_BackLeg")
@@ -165,6 +200,7 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron(name=11, jointName="RightLeg_RightLowerLeg")
 
 
+        # ------------------ both BRAINS A and B need this ------------------
         # Synapses using weights
         for currentRow in range(c.numSensorNeurons):         # Sensor neurons
             for currentColumn in range(c.numMotorNeurons):  # Motor neurons

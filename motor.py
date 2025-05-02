@@ -8,7 +8,7 @@ import numpy as np
 class MOTOR:
     def __init__(self, jointName):
         self.jointName = jointName
-        self.values = np.zeros(1000)
+        self.values = np.zeros(c.NUM_STEPS)
 
     def Set_Value(self, desiredAngle, robot, t):
         self.values[t] = desiredAngle

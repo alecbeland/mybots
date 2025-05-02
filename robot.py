@@ -49,7 +49,7 @@ class ROBOT:
             # print(jointName)
             self.motors[jointName] = MOTOR(jointName)
             # initialize random weight
-            self.sinVals = np.linspace(0, (2 * np.pi), 1000)
+            self.sinVals = np.linspace(0, (2 * np.pi), c.NUM_STEPS)
 
 
     def Act(self, t):

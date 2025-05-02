@@ -24,6 +24,7 @@ class SIMULATION:
         
         # Created world and robot instances
         self.world = WORLD()
+        
         self.robot = ROBOT(solutionID)
 
         # Prepare sim
@@ -32,7 +33,7 @@ class SIMULATION:
 
     def Run(self):
         for i in range(c.NUM_STEPS):
-            #print(i)
+            print(i)
             p.stepSimulation()
             self.robot.Sense(i)
             self.robot.Think()

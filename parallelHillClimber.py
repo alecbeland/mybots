@@ -80,10 +80,12 @@ class PARALLEL_HILL_CLIMBER:
         bestParent = None
         bestFitness = float('inf')
 
-        for parent in self.parents.values():
+        for i, parent in self.parents.items():
             if parent.fitness < bestFitness:
                 bestFitness = parent.fitness
                 bestParent = parent
+                bestID = i
 
+        print(f"Best solution is Parent {bestID} with fitness: {bestFitness}")
         bestParent.Start_Simulation("GUI")
 

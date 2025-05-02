@@ -1,11 +1,12 @@
 import pyrosim.pyrosim as pyrosim
 import numpy as np
+import constants as c
 
 class SENSOR:
 
     def __init__(self, linkName):
         self.linkName = linkName
-        self.values = np.zeros(1000)  # Initialize sensor values array
+        self.values = np.zeros(c.NUM_STEPS)  # Initialize sensor values array
 
 
     def Get_Value(self, t):

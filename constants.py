@@ -5,9 +5,6 @@ GRAVITY_X = 0
 GRAVITY_Y = 0
 GRAVITY_Z = -9.8
 
-# Sensor array size
-SENSOR_ARRAY_SIZE = 1000
-
 # Sinusoidal Motor Command Parameters
 AMPLITUDE_BACK_LEG = np.pi / 3
 FREQUENCY_BACK_LEG = 3.5
@@ -24,7 +21,10 @@ PHASE_OFFSET = 0
 MAX_FORCE = 200
 
 # Simulation steps
-NUM_STEPS = 1000
+NUM_STEPS = 3000
+
+# Sensor array size
+SENSOR_ARRAY_SIZE = NUM_STEPS + 10
 
 # Number of generations
 numberOfGenerations = 20
@@ -32,10 +32,10 @@ numberOfGenerations = 20
 populationSize = 10
 
 # Max force applied by motors
-MAX_FORCE_BACK_LEG = 200
-MAX_FORCE_FRONT_LEG = 200
+MAX_FORCE_BACK_LEG = 250
+MAX_FORCE_FRONT_LEG = 250
 
-motorJointRange = 0.2
+motorJointRange = 0.4 # originally .2
 
 # Neural Network Constants
 numSensorNeurons = 4
