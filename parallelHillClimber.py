@@ -2,10 +2,15 @@ import constants as c
 import copy
 from solution import SOLUTION
 import os
+import numpy as np
 
 
 class PARALLEL_HILL_CLIMBER:
-    def __init__(self):
+    def __init__(self, runID, variant):
+        self.runID = runID
+        self.variant = variant
+        self.fitness_matrix = np.zeros((c.populationSize, c.numberOfGenerations))
+
         os.system("rm brain*.nndf")
         os.system("rm fitness*.txt")
         self.parents = {}
@@ -19,8 +24,10 @@ class PARALLEL_HILL_CLIMBER:
 
 
     def Evolve(self):
+        self.currentGeneration = 0
         self.Evaluate(self.parents)
         for currentGeneration in range(c.numberOfGenerations):
+            self.currentGeneration = currentGeneration  # Track current generation
             self.Evolve_For_One_Generation()
         
         # # Show the first random solution visually
@@ -28,6 +35,12 @@ class PARALLEL_HILL_CLIMBER:
 
         # # Now evaluate the parent blindly before evolution begins
         # self.parent.Evaluate("DIRECT")
+        np.save(f"npyfitnessMatrix_{self.variant}_run{self.runID}.npy", self.fitness_matrix)
+        np.savetxt(f"txtfitnessMatrix_{self.variant}_run{self.runID}.txt", self.fitness_matrix)
+        print(f"Saved fitness matrix for {self.variant} run {self.runID}")
+
+        
+
         
 
     
@@ -37,6 +50,10 @@ class PARALLEL_HILL_CLIMBER:
         self.Evaluate(self.children)
         self.Print()
         self.Select()
+
+        for i in self.parents:
+            self.fitness_matrix[i, self.currentGeneration] = self.parents[i].fitness * -1
+
 
 
     def Mutate(self):
