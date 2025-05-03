@@ -6,8 +6,11 @@ import glob
 # a_files = sorted(glob.glob("npyfitnessMatrix_A_run*.npy"))
 # b_files = sorted(glob.glob("npyfitnessMatrix_B_run*.npy"))
 
-a_files = sorted(glob.glob("p10g75npyfitnessMatrix_A_run*.npy"))
-b_files = sorted(glob.glob("p10g75npyfitnessMatrix_B_run*.npy"))
+# a_files = sorted(glob.glob("p10g75npyfitnessMatrix_A_run*.npy"))
+# b_files = sorted(glob.glob("p10g75npyfitnessMatrix_B_run*.npy"))
+
+a_files = sorted(glob.glob("p10g200npyfitnessMatrix_A_run*.npy"))
+b_files = sorted(glob.glob("p10g200npyfitnessMatrix_B_run*.npy"))
 
 # Load matrices and convert to positive fitness if needed
 a_matrices = [np.load(f) for f in a_files]

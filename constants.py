@@ -38,5 +38,5 @@ MAX_FORCE_FRONT_LEG = 250
 motorJointRange = 0.4 # originally .2
 
 # Neural Network Constants
-numSensorNeurons = 9  # 9 for A  4 for B
+numSensorNeurons = 4  # 9 for A  4 for B
 numMotorNeurons = 8
