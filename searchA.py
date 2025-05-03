@@ -3,7 +3,7 @@ import constants as c
 from parallelHillClimber import PARALLEL_HILL_CLIMBER
 
 
-for run in range(5):
+for run in range(10):
     phc = PARALLEL_HILL_CLIMBER(runID=run, variant="A")
     phc.Evolve()
 

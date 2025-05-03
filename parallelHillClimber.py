@@ -35,8 +35,8 @@ class PARALLEL_HILL_CLIMBER:
 
         # # Now evaluate the parent blindly before evolution begins
         # self.parent.Evaluate("DIRECT")
-        np.save(f"npyfitnessMatrix_{self.variant}_run{self.runID}.npy", self.fitness_matrix)
-        np.savetxt(f"txtfitnessMatrix_{self.variant}_run{self.runID}.txt", self.fitness_matrix)
+        np.save(f"p10g200npyfitnessMatrix_{self.variant}_run{self.runID}.npy", self.fitness_matrix)
+        np.savetxt(f"p10g200txtfitnessMatrix_{self.variant}_run{self.runID}.txt", self.fitness_matrix)
         print(f"Saved fitness matrix for {self.variant} run {self.runID}")
 
         

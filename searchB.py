@@ -9,7 +9,7 @@ DID U UNCOMMENT BRAIN B IN SOLUTION?!
 DID U CHANGE numSensorNeurons TO 4?!
 '''
 
-for run in range(5):
+for run in range(10):
     phc = PARALLEL_HILL_CLIMBER(runID=run, variant="B")
     phc.Evolve()
 

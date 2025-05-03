@@ -27,9 +27,9 @@ NUM_STEPS = 3000
 SENSOR_ARRAY_SIZE = NUM_STEPS + 10
 
 # Number of generations
-numberOfGenerations = 20
+numberOfGenerations = 200
 
-populationSize = 40
+populationSize = 10
 
 # Max force applied by motors
 MAX_FORCE_BACK_LEG = 250
@@ -38,5 +38,5 @@ MAX_FORCE_FRONT_LEG = 250
 motorJointRange = 0.4 # originally .2
 
 # Neural Network Constants
-numSensorNeurons = 4  # 9 for A  4 for B
+numSensorNeurons = 9  # 9 for A  4 for B
 numMotorNeurons = 8
